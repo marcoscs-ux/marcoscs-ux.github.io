@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Global Tech Solutions</title>
+  <meta name="description" content="Soluciones informáticas empresariales — Global Tech Solutions" />
+  <style>
+    :root{
+      --brand-primary: #0ea5e9;
+      --brand-accent:  #2563eb;
+      --brand-ink:     #0b1220;
+      --brand-muted:   #eef2ff;
+      --brand-surface: #ffffff;
+      --brand-border:  #e2e8f0;
+      --brand-orange:  #f59e0b;
+      --radius: 14px;
+      --shadow-sm: 0 2px 10px rgba(2, 8, 23, .06);
+      --shadow-md: 0 10px 30px rgba(2, 8, 23, .10);
+      --gradient: linear-gradient(135deg,var(--brand-accent), var(--brand-primary));
+      --header-bg: linear-gradient(90deg, #0b3b5a, #2563eb);
+      --page-bg: linear-gradient(180deg,#f0f9ff 0%, #eaf6ff 40%, #ffffff 100%);
+    }
+
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family: system-ui, Segoe UI, Roboto, Helvetica, Arial; color:var(--brand-ink); background:var(--page-bg); line-height:1.55;}
+    a{color:var(--brand-accent);text-decoration:none}
+    img{max-width:100%;display:block}
+
+    .container{width:min(1100px,92%);margin-inline:auto}
+    .grid{display:grid;gap:22px}
+    .btn{display:inline-block;padding:12px 18px;border-radius:12px;border:1px solid transparent;font-weight:700}
+    .btn-primary{background:var(--gradient);color:#fff; box-shadow:var(--shadow-sm)}
+    .btn-ghost{background:transparent;border:1px solid var(--brand-border);color:var(--brand-ink)}
+
+    /* Header actualizado */
+    header{position:sticky;top:0;z-index:50;background:var(--header-bg);border-bottom:1px solid var(--brand-border)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand img{height:48px;width:auto;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2))}
+    nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+    nav a{padding:8px 10px;border-radius:10px;color:#fff;font-weight:500}
+    nav a:hover{background:rgba(255,255,255,0.15)}
+    .nav-cta{display:flex;align-items:center;gap:10px}
+    .btn-primary.header-cta{background:#fff;color:#2563eb;font-weight:700}
+    .menu-toggle{display:none;border:1px solid var(--brand-border);padding:8px 10px;border-radius:10px;background:#fff}
+
+    /* Hero */
+    .hero{padding:80px 0;background:
+      radial-gradient(1000px 400px at 50% -200px, rgba(37,99,235,.12), transparent 60%)}
+    .hero .content{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
+    .title{font-size:clamp(28px,4vw,46px);line-height:1.1;margin-bottom:14px;color:#0b1220}
+    .title .accent{color:var(--brand-orange)}
+    .subtitle{font-size:18px;color:#334155;margin-bottom:24px}
+    .hero img{border-radius:20px;box-shadow:var(--shadow-md);border:1px solid var(--brand-border)}
+
+    /* Secciones base */
+    section{padding:64px 0}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:26px}
+    .section-head h2{margin:0;font-size:clamp(22px,3vw,32px)}
+    .underline{height:4px;width:64px;border-radius:999px;background:var(--brand-accent)}
+
+    /* Tarjetas */
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+    .card{background:var(--brand-surface);border:1px solid var(--brand-border);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow-sm)}
+    .card h3{margin:6px 0;font-size:18px}
+    .badge{display:inline-block;font-size:12px;padding:4px 7px;border-radius:999px;background:linear-gradient(135deg,#e2e8f0,#f8fafc);border:1px solid var(--brand-border)}
+
+    /* Soluciones */
+    #soluciones .card{background:linear-gradient(180deg,#ffffff,#f8fafc)}
+
+    /* KPIs */
+    .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:18px}
+    .kpi{background:#f8fafc;border:1px solid #e5e7eb;border-radius:var(--radius);padding:18px;text-align:center}
+    .kpi .num{font-size:28px;font-weight:800;color:#0b3b5a}
+
+    /* Clientes */
+    .logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:22px;align-items:center}
+    .logo-item{height:46px;border:1px solid var(--brand-border);border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center}
+
+    /* Contacto */
+    form{display:grid;gap:12px}
+    input, textarea, select{padding:12px 14px;border:1px solid var(--brand-border);border-radius:10px;font:inherit}
+    textarea{min-height:120px;resize:vertical}
+
+    /* Footer */
+    footer{padding:28px 0;border-top:1px solid var(--brand-border);background:#0b3b5a;color:#fff}
+
+    /* Responsive */
+    @media(max-width:900px){
+      .hero .content{grid-template-columns:1fr}
+      nav ul{display:none}
+      .menu-toggle{display:inline-flex;align-items:center;gap:8px}
+      .nav.open ul{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:#0b3b5a;padding:12px;border-top:1px solid var(--brand-border)}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav" id="siteNav">
+      <div class="brand">
+        <!-- Logo oficial de GlobalTech Solutions -->
+        <img src="sandbox:/mnt/data/Img globaltech solutions.png" alt="Logo GlobalTech Solutions" />
+      </div>
+      <nav>
+        <ul id="menuList">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#soluciones">Soluciones</a></li>
+          <li><a href="#clientes">Clientes</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="nav-cta">
+        <a class="btn btn-primary header-cta" href="#contacto">Hablemos</a>
+        <button class="menu-toggle" id="menuBtn" aria-expanded="false" aria-controls="menuList">☰ Menú</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="inicio">
+    <div class="container content">
+      <div>
+        <h1 class="title">Soluciones <span class="accent">TI</span> de alto impacto para tu empresa</h1>
+        <p class="subtitle">Consultoría cloud, automatización de procesos, ciberseguridad y soporte gestionado.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a class="btn btn-primary" href="#servicios">Ver servicios</a>
+          <a class="btn btn-ghost" href="#soluciones">Casos de uso</a>
+        </div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1200&q=60" alt="Equipo de trabajo tecnológico" />
+    </div>
+  </section>
+
+  <!-- Servicios -->
+  <section id="servicios">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Servicios</h2>
+          <div class="underline"></div>
+        </div>
+        <a class="btn btn-ghost" href="#contacto">Solicitar información</a>
+      </div>
+      <div class="cards">
+        <article class="card"><div class="badge">Infraestructura</div><h3>Redes, Servidores y Cloud</h3><p>Implementación y migración a la nube, hardening, IaC y alta disponibilidad.</p></article>
+        <article class="card"><div class="badge">Desarrollo</div><h3>Apps & Integraciones</h3><p>APIs, microservicios y conectores con ERP/CRM para procesos fin a fin.</p></article>
+        <article class="card"><div class="badge">Ciberseguridad</div><h3>Protección & Cumplimiento</h3><p>Gestión de identidades, SIEM/SOC, auditorías y respuesta a incidentes.</p></article>
+        <article class="card"><div class="badge">Soporte</div><h3>Service Desk & Mantenimiento</h3><p>Planes por nivel de servicio con métricas y reportes ejecutivos.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Soluciones / Casos de uso -->
+  <section id="soluciones" style="background:var(--brand-muted)">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Soluciones y Casos de uso</h2>
+          <div class="underline"></div>
+        </div>
+        <span style="color:#475569">Tecnología aplicada a objetivos de negocio</span>
+      </div>
+      <div class="cards">
+        <div class="card"><strong>Automatización de pendientes semanales</strong><p>Recordatorios programados, integraciones con Gmail/Calendar y tableros de seguimiento.</p></div>
+        <div class="card"><strong>Portal clientes B2B</strong><p>Autogestión, tickets, facturación y reportes integrados.</p></div>
+        <div class="card"><strong>Observabilidad 360°</strong><p>Monitoreo de aplicaciones, trazas y alertas inteligentes.</p></div>
+        <div class="card"><strong>Analítica de ventas</strong><p>KPIs de margen, cohortes, pronósticos y segmentación por región.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KPIs -->
+  <section>
+    <div class="container">
+      <div class="kpis">
+        <div class="kpi"><div class="num">99.9%</div><div>Uptime objetivo</div></div>
+        <div class="kpi"><div class="num">⚡ 30%</div><div>Procesos más ágiles</div></div>
+        <div class="kpi"><div class="num">🔐 0</div><div>Incidentes críticos</div></div>
+        <div class="kpi"><div class="num">24/7</div><div>Soporte</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clientes -->
+  <section id="clientes" style="background:var(--brand-muted)">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Clientes</h2>
+          <div class="underline"></div>
+        </div>
+        <span style="color:#475569">Confían en nuestro trabajo</span>
+      </div>
+      <div class="logos">
+        <div class="logo-item">Logo A</div>
+        <div class="logo-item">Logo B</div>
+        <div class="logo-item">Logo C</div>
+        <div class="logo-item">Logo D</div>
+        <div class="logo-item">Logo E</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2>Contacto</h2>
+          <div class="underline"></div>
+        </div>
+        <span style="color:#475569">Cuéntanos tu proyecto</span>
+      </div>
+      <form aria-label="Formulario de contacto">
+        <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px">
+          <label><span>Nombre</span><input type="text" name="nombre" placeholder="Tu nombre" required /></label>
+          <label><span>Correo</span><input type="email" name="correo" placeholder="tucorreo@empresa.com" required /></label>
+        </div>
+        <label><span>Interés principal</span>
+          <select name="interes">
+            <option>Consultoría en Cloud</option>
+            <option>Desarrollo a la medida</option>
+            <option>Automatización de procesos</option>
+            <option>Soporte gestionado</option>
+          </select>
+        </label>
+        <label><span>Mensaje</span><textarea name="mensaje" placeholder="Describe brevemente tus necesidades..."></textarea></label>
+        <button class="btn btn-primary" type="submit">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container" style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between">
+      <div>© <span id="yr"></span> Global Tech Solutions. Todos los derechos reservados.</div>
+      <div style="display:flex; gap:12px">
+        <a href="#" style="color:#fff">LinkedIn</a>
+        <a href="#" style="color:#fff">GitHub</a>
+        <a href="#" style="color:#fff">Privacidad</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navegación responsive
+    const menuBtn = document.getElementById('menuBtn');
+    const siteNav = document.getElementById('siteNav');
+    menuBtn?.addEventListener('click', ()=>{
+      const open = siteNav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    // Año dinámico
+    document.getElementById('yr').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
